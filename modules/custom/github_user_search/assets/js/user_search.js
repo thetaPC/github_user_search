@@ -14,24 +14,32 @@
           url: "https://api.github.com/users/" + user,
           type: 'GET',
           dataType: 'json',
+          data: {
+            client_id: '1fe29a511df572a999e0',
+            client_secret: 'd1246418259eddc7b3b29e39759e3308af1e5fc1'
+          },
           success: function (result) {
             console.log(result);
-            $.each(result, function (key, value) {
-              var columnImage = document.createElement("div");
-              columnImage.className = "col col-xs-12 col-md-6";
-              var img = document.createElement('img');
-              img.className = "img-responsive";
-              img.src = value.avatar_url;
-              img.width = '100';
-              img.alt = 'Profile image of ' + value.login;
-              columnImage.append(img);
-              $("#user-search-results").append(columnImage);
-
-              var columnName = document.createElement("div");
-              columnName.className = "col col-xs-12 col-md-6";
-              columnName.innerText = value.login;
-              $("#user-search-results").append(columnName);
-            });
+            var column = document.createElement("div");
+            column.className = "col col-xs-12";
+            var img = document.createElement('img');
+            img.className = "img-responsive";
+            img.src = result.avatar_url;
+            img.width = '100';
+            img.alt = 'Profile image of ' + result.login;
+            column.append(img);
+            //
+            var username = document.createElement("div");
+            username.className = "username";
+            username.innerText = result.login;
+            column.append(username);
+            //
+            var biography = document.createElement("div");
+            biography.className = "biography";
+            biography.innerText = result.bio;
+            column.append(biography);
+            //
+            $("#user-search-results").append(column);
           }
         });
 
@@ -45,10 +53,6 @@
         // url: "https://api.github.com/search/users?q=tom",
         type: 'GET',
         dataType: 'json',
-        headers: {
-          "accept": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        },
         success: function (result) {
           // $('.view-empty').html(JSON.stringify(result));
           $("#user-search-results-count").empty();
