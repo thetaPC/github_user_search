@@ -3,3 +3,9 @@ user_search:
     assets/js/user_search.js: {}
   dependencies:
     - core/jquery
+
+pagination:
+  js:
+    assets/js/pagination.js: {}
+  dependencies:
+    - core/jquery
