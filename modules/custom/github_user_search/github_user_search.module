@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function github_user_search_theme()
+{
+  return [
+    'github_user_search_form' => [
+      'variables' => ['item' => NULL],
+    ],
+  ];
+}

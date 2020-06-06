@@ -1,0 +1,5 @@
+name: Github User Search
+type: module
+description: 'Github user search with keyterms'
+package: mloza
+core_version_requirement: ^8 || ^9

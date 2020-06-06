@@ -1,0 +1,5 @@
+user_search:
+  js:
+    assets/js/user_search.js: {}
+  dependencies:
+    - core/jquery

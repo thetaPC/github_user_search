@@ -1,0 +1,12 @@
+name: Toolbar
+type: module
+description: 'Provides a toolbar that shows the top-level administration menu items and links from other modules.'
+package: Core
+# version: VERSION
+dependencies:
+  - drupal:breakpoint
+
+# Information added by Drupal.org packaging script on 2020-06-03
+version: '9.0.0'
+project: 'drupal'
+datestamp: 1591221734
