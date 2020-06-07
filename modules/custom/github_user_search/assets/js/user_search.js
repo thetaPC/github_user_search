@@ -57,7 +57,6 @@
           // $("#user-search-results").append(column);
         // TESTING END ==========
         var userData = getUserData(user).then(data => {
-          console.log(data);
           var column = document.createElement("div");
           column.className = "col col-xs-12 col-md-4";
           var panel = document.createElement("div");
@@ -110,7 +109,6 @@
         }).catch(error => {
           console.log('error============:', error);
         });
-        console.log(data);
         //
       });
 
