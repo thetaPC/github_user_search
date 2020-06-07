@@ -21,31 +21,31 @@
       $("#user-search-results").empty();
       $("#user-search-results-count").empty();
       /** @type {array} */
-      currentPageUsers = [];
+      var currentPageUsers = [];
       /** @type {object} */
       var response = await fetch(githubURL);
       /** @type {array} */
       var results = await response.json();
       // Total count ---
       /** @type {int} */
-      $user_count = parseInt(results.total_count);
+      var user_count = parseInt(results.total_count);
       // Create a unique message based on the number of users found.
       /** @type {string} */
-      $user_count_text = ' - No users found.'
-      if ($user_count > 1) {
-        $user_count_text = 'users found.'
+      user_count_text = ' - No users found.'
+      if (user_count > 1) {
+        user_count_text = 'users found.'
       }
-      if ($user_count == 1) {
-        $user_count_text = 'user found.'
+      if (user_count == 1) {
+        user_count_text = 'user found.'
       }
       // Add the user count to the block.
       /** @type {Element} */
       var columnResultCount = document.createElement("div");
       columnResultCount.className = "col col-xs-12";
-      columnResultCount.innerText = $user_count + ' ' + $user_count_text;
+      columnResultCount.innerText = user_count + ' ' + user_count_text;
       $("#user-search-results-count").append(columnResultCount);
       // Create a top pagination if there's than one page found.
-      if ($user_count > usersPerPage) {
+      if (user_count > usersPerPage) {
         /** @type {string} */
         var headersPaginationLinks = response.headers.get("link");
         createPagination(headersPaginationLinks);
@@ -122,7 +122,7 @@
         });
       });
       // Create bottom pagination if there's more than one page.
-      if ($user_count > usersPerPage) {
+      if (user_count > usersPerPage) {
         /** @type {string} */
         var headersPaginationLinks = response.headers.get("link");
         createPagination(headersPaginationLinks);
@@ -221,10 +221,10 @@
         var pagesNo = [];
         // Create previous two pages.
         /** @type {int} */
-        prev1 = currentPageNo - 2;
+        var prev1 = currentPageNo - 2;
         pagesNo.push(prev1);
         /** @type {int} */
-        prev2 = currentPageNo - 1;
+        var prev2 = currentPageNo - 1;
         pagesNo.push(prev2);
         // Verify that the previous two page numbers are valid.
         /** @type {array} */
@@ -252,10 +252,10 @@
         // Create next two pages.
         pagesNo = [];
         /** @type {int} */
-        next1 = currentPageNo + 1;
+        var next1 = currentPageNo + 1;
         pagesNo.push(next1);
         /** @type {int} */
-        next2 = currentPageNo + 2;
+        var next2 = currentPageNo + 2;
         pagesNo.push(next2);
         // Verify that the next two page numbers are valid.
         /** @type {array} */
@@ -273,7 +273,7 @@
       }
       // Reorder pagination links.
       /** @type {array} */
-      orderedHeaderLinks = reorderPaginationLinks(headerLinks);
+      var orderedHeaderLinks = reorderPaginationLinks(headerLinks);
       return orderedHeaderLinks;
     };
     // Verify that the page numbers exist in the pages.

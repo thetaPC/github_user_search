@@ -66,9 +66,12 @@ class GithubUserSearchForm extends FormBase {
   }
 
   /**
-   * An Ajax callback.
+   * An AJAX callback.
    *
    * Invokes a jQuery function using a module library upon search.
+   *
+   * GitHub search can be done completely through the this AJAX callback.
+   * However, the reason to send it a jQuery file is to complete a JavaScript exercise.
    *
    * @param array $form
    *   Nested array of form elements that comprise the form.
