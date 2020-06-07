@@ -13,7 +13,7 @@
       var results = await response.json();
       // Total count ---
       $user_count = parseInt(results.total_count);
-      $user_count_text = 'No users found.'
+      $user_count_text = ' - No users found.'
       if ($user_count > 1) {
         $user_count_text = 'users found.'
       }
