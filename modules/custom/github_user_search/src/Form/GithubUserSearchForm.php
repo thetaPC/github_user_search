@@ -9,6 +9,8 @@ use Drupal\Core\Ajax\InvokeCommand;
 
 /**
  * Implements a Github user search form.
+ *
+ * @todo Implement UI fields to allow user to submit their API keys.
  */
 class GithubUserSearchForm extends FormBase {
 
