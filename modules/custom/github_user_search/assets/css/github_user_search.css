@@ -2,7 +2,7 @@
   font-size: 1.5em;
 }
 
-#user-search-results .row {
+#user-search-results.row {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21,9 +21,14 @@
   margin-bottom: 1em;
 }
 
+#user-search-results .pagination {
+  padding-left: 15px;
+}
+
 #user-search-results img,
 #user-search-results .username,
 #user-search-results .profile-url,
+#user-search-results .followers,
 #user-search-results .biography {
   margin-bottom: 1em;
 }

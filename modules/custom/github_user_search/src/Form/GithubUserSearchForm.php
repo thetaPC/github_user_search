@@ -29,6 +29,7 @@ class GithubUserSearchForm extends FormBase {
     $form['user'] = [
       '#type' => 'search',
       '#title' => $this->t('Enter a user'),
+      '#required' => TRUE,
     ];
     $form['search'] = [
       '#type' => 'button',
@@ -42,20 +43,6 @@ class GithubUserSearchForm extends FormBase {
         ],
       ],
     ];
-    // $form['actions']['#type'] = 'actions';
-    // $form['actions']['submit'] = [
-    //   '#type' => 'submit',
-    //   '#value' => $this->t('Search'),
-    //   '#button_type' => 'primary',
-    //   '#ajax' => [
-    //     'callback' => [$this, 'userSearch'],
-    //     'event' => 'click',
-    //     'progress' => [
-    //       'type' => 'throbber',
-    //       'message' => $this->t('Searching...'),
-    //     ],
-    //   ],
-    // ];
     $form['#attached']['library'][] = 'github_user_search/user_search';
     return $form;
   }

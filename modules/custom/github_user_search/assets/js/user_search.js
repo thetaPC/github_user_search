@@ -20,7 +20,10 @@
       if ($user_count == 1) {
         $user_count_text = 'user found.'
       }
-      $("#user-search-results-count").append($user_count + ' ' + $user_count_text);
+      var columnResultCount = document.createElement("div");
+      columnResultCount.className = "col col-xs-12";
+      columnResultCount.innerText = $user_count + ' ' + $user_count_text;
+      $("#user-search-results-count").append(columnResultCount);
       // Pagination ---
       if ($user_count > usersPerPage) {
         // Create top pagination.
@@ -32,30 +35,6 @@
         currentPageUsers.push(user.login);
       });
       currentPageUsers.forEach(user => {
-        // var userData = getUserData(user);
-        // userData.then
-        // TESTING ==========
-          // var column = document.createElement("div");
-          // column.className = "col col-xs-12 col-md-4";
-          // var panel = document.createElement("div");
-          // panel.className = "panel panel-default";
-          // var username = document.createElement("div");
-          // username.className = "username";
-          // username.innerText = user;
-          // panel.append(username);
-          // // https://ghbtns.com/#follow
-          // var follow_btn = document.createElement("iframe");
-          // // follow_btn.href = data.html_url;
-          // follow_btn.src = 'https://ghbtns.com/github-btn.html?user=' + user + '&type=follow&count=true';
-          // follow_btn.frameborder = "0";
-          // follow_btn.scrolling = "0";
-          // follow_btn.width = "170";
-          // follow_btn.height = "20";
-          // follow_btn.title = 'Follow @' + user + ' on GitHub';
-          // panel.append(follow_btn);
-          // column.append(panel);
-          // $("#user-search-results").append(column);
-        // TESTING END ==========
         var userData = getUserData(user).then(data => {
           var column = document.createElement("div");
           column.className = "col col-xs-12 col-md-4";
@@ -78,16 +57,10 @@
           username.innerText = data.login;
           panel.append(username);
           //
-          // https://ghbtns.com/#follow
-          var follow_btn = document.createElement("iframe");
-          // follow_btn.href = data.html_url;
-          follow_btn.src = 'https://ghbtns.com/github-btn.html?user=' + data.login + '&type=follow&count=true';
-          follow_btn.frameborder = "0";
-          follow_btn.scrolling = "0";
-          follow_btn.width = "170";
-          follow_btn.height = "20";
-          follow_btn.title = 'Follow @' + data.login + ' on GitHub';
-          panel.append(follow_btn);
+          var followers = document.createElement("div");
+          followers.className = "followers";
+          followers.innerText = data.followers + ' followers';
+          panel.append(followers);
           //
           var biography = document.createElement("div");
           biography.className = "biography";
@@ -107,9 +80,8 @@
           column.append(panel);
           $("#user-search-results").append(column);
         }).catch(error => {
-          console.log('error============:', error);
+          console.log('error:', error);
         });
-        //
       });
 
       // Pagination ---
@@ -136,8 +108,10 @@
         }
       });
       paginationURLs = createInnerPaginationItems(paginationURLs);
+      var paginationColumn = document.createElement("div");
+      paginationColumn.className = "col col-xs-12";
       var pagination = document.createElement("ul");
-      pagination.className = "pagination col col-xs-12";
+      pagination.className = "pagination";
       paginationURLs.forEach(paginationURL => {
         var pagination_item = document.createElement("li");
         if (paginationURL.active) {
@@ -152,11 +126,10 @@
         pagination.append(pagination_item);
 
       });
-      $("#user-search-results").append(pagination);
+      paginationColumn.append(pagination);
+      $("#user-search-results").append(paginationColumn);
     };
     function createInnerPaginationItems(headerLinks) {
-      var pagination = document.createElement("ul");
-      pagination.className = "pagination";
       if (headerLinks[0].title == 'next') {
         // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
         var urlParams = new URLSearchParams(headerLinks[0].url);
@@ -217,7 +190,6 @@
         });
       }
       orderedHeaderLinks = reorderPaginationLinks(headerLinks);
-      console.log(orderedHeaderLinks);
       return orderedHeaderLinks;
     };
     function validPageNo(pageNumbers, lastPageNo) {
@@ -230,16 +202,32 @@
       return validNumbers;
     }
     function reorderPaginationLinks(paginationLinks) {
-      var paginationOrder = ['first', 'prev', 'next', 'last'];
-      result = paginationLinks.map(function (paginationLink) {
-        var n = paginationOrder.indexOf(paginationLink.title);
-        paginationOrder[n] = '';
-        return [n, paginationLink]
-      }).sort().map(function (j) {
-        return j[1];
-      })
-      return result;
+      paginationLinks.forEach(function (paginationLink, index) {
+        if (paginationLink.title == 'prev') {
+          paginationLinks.splice(index, 1);
+          paginationLinks.unshift(paginationLink);
+        }
+      });
+      paginationLinks.forEach(function (paginationLink, index) {
+        if (paginationLink.title == 'first') {
+          paginationLinks.splice(index, 1);
+          paginationLinks.unshift(paginationLink);
+        }
+      });
+      paginationLinks.forEach(function (paginationLink, index) {
+        if (paginationLink.title == 'next') {
+          paginationLinks.push(paginationLinks.splice(index, 1)[0]);
+        }
+      });
+      paginationLinks.forEach(function (paginationLink, index) {
+        if (paginationLink.title == 'last') {
+          paginationLinks.push(paginationLinks.splice(index, 1)[0]);
+        }
+      });
+      return paginationLinks;
     }
-    getUsersByQuery('https://api.github.com/search/users?q=' + userQuery);
+    if (userQuery) {
+      getUsersByQuery('https://api.github.com/search/users?q=' + userQuery);
+    }
   };
 })(jQuery);
