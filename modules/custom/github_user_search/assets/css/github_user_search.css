@@ -42,3 +42,7 @@
 iframe {
   border: none;
 }
+
+.img-circle {
+  border-radius: 50%;
+}

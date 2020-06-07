@@ -65,7 +65,7 @@
           // Creating a Bootstrap panel per user.
           /** @type {Element} */
           var panel = document.createElement("div");
-          panel.className = "panel panel-default";
+          panel.className = "panel panel-default card";
           // Creating an element associated with the user's name.
           /** @type {Element} */
           var name = document.createElement("h2");
@@ -165,12 +165,14 @@
         // Set up an active pagination for Bootstrap styling.
         /** @type {Element} */
         var pagination_item = document.createElement("li");
+        pagination_item.className = "page-item";
         if (paginationURL.active) {
           pagination_item.className = "active";
         }
         // Tie each link to its correct GitHub Search page.
         /** @type {Element} */
         var btnPagerLink = document.createElement("a")
+        pagination_item.className = "page-link";
         btnPagerLink.textContent = paginationURL.title;
         btnPagerLink.addEventListener("click", e => {
           // Update the search with the new page number.
