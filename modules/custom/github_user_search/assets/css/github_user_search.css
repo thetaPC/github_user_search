@@ -25,6 +25,19 @@
   padding-left: 15px;
 }
 
+#user-search-results .pagination .pager-link {
+  padding: 0;
+}
+
+#user-search-results .pagination .pager-link a {
+  padding: 0.5em 0.75em;
+}
+
+#user-search-results .pagination .pager-link a:hover,
+#user-search-results .pagination .pager-link a:focus {
+  cursor: pointer;
+}
+
 #user-search-results img,
 #user-search-results .username,
 #user-search-results .profile-url,
