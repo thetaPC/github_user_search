@@ -1,19 +1,19 @@
 {#
 /**
- * vars:
- *    item :
- *      - form GithubUserSearchForm
+ * @file
+ * GitHub User Search Form block.
+ *
+ * Available variables:
+ * - item: A list of elements:
+ *   - form: The output of the GitHub User Search Form.
  */
 #}
 
-{#
-// Form container.
-#}
+{% spaceless %}
+  <div class="form--inline form-inline clearfix">
+    {{ item.form }}
+  </div>
 
-<div class="form--inline form-inline clearfix">
-	{{ item.form }}
-</div>
-
-<div id="user-search-results-count" class="row"></div>
-<div id="user-search-results" class="row"></div>
-
+  <div id="user-search-results-count" class="row"></div>
+  <div id="user-search-results" class="row"></div>
+{% endspaceless %}

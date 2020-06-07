@@ -2,13 +2,25 @@
 
 /**
  * @file
+ * The main file for the GitHub User Search module.
  */
 
 /**
  * Implements hook_theme().
+ * Register a module or theme's theme implementations.
+ *
+ * @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21theme.api.php/function/hook_theme/8.8.x
+ *
+ * @param array $existing
+ *   An array of existing implementations that may be used for override purposes. This is primarily useful for themes that may wish to examine existing implementations to extract data (such as arguments) so that it may properly register its own, higher priority implementations.
+ * @param string $type
+ *   Whether a theme, module, etc. is being processed.
+ * @param string $theme
+ *   The actual name of theme, module, etc. that is being being processed.
+ * @param string $path
+ *   The directory path of the theme or module, so that it doesn't need to be looked up.
  */
-function github_user_search_theme()
-{
+function github_user_search_theme(array $existing, string $type, string $theme, string $path) {
   return [
     'github_user_search_form' => [
       'variables' => ['item' => NULL],

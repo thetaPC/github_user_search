@@ -1,20 +1,12 @@
 <?php
 
-/**
- * @file
- */
-
 namespace Drupal\github_user_search\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Cache\Cache;
-use Drupal\node\Entity\Node;
-
 
 /**
- * Github User Search Block
+ * Github User Search Block - renders a simple search form.
  *
  * @Block(
  *   id = "github_user_search",
@@ -56,8 +48,7 @@ class GithubUserSearchBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-
-    // Get the rendered version of the lookup form.
+    // Get the rendered version of the search form.
     $form = \Drupal::formBuilder()->getForm('Drupal\github_user_search\Form\GithubUserSearchForm');
     // Block markup.
     $block_theme = [
@@ -75,7 +66,6 @@ class GithubUserSearchBlock extends BlockBase {
         ],
       ],
     ];
-
     return $markup;
   }
 
