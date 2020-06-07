@@ -1,11 +1,8 @@
 user_search:
+  css:
+    theme:
+      assets/css/github_user_search.css: {}
   js:
     assets/js/user_search.js: {}
-  dependencies:
-    - core/jquery
-
-pagination:
-  js:
-    assets/js/pagination.js: {}
   dependencies:
     - core/jquery

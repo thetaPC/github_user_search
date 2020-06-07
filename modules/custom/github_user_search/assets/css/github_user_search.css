@@ -1,0 +1,39 @@
+#user-search-results-count {
+  font-size: 1.5em;
+}
+
+#user-search-results .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#user-search-results .panel {
+  height: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#user-search-results .col {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+#user-search-results img,
+#user-search-results .username,
+#user-search-results .profile-url,
+#user-search-results .biography {
+  margin-bottom: 1em;
+}
+
+#user-search-results img {
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.5em solid #28a745;
+}
+
+iframe {
+  border: none;
+}
