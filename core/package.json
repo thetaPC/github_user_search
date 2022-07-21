@@ -59,7 +59,7 @@
     "stylelint-config-standard": "^19.0.0",
     "stylelint-no-browser-hacks": "^1.2.1",
     "stylelint-order": "^4.0.0",
-    "terser": "^4.4.3"
+    "terser": "^4.8.1"
   },
   "//": "'development is the default environment, and legacy is for transpiling the old jQuery codebase",
   "babel": {
